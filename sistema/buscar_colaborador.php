@@ -65,8 +65,7 @@ include "../conexion.php";
         $busqueda = strtolower($_REQUEST['busqueda']);
         if (empty($busqueda)) {
             {
-                header("location: lista_colaborador.php");
-                mysqli_close($conection);
+                
             }
         }
 

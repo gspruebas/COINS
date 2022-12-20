@@ -48,19 +48,19 @@ if (!empty($_POST)) {
         }
     }
 
-    mysqli_close($conection);
+    
 }
 
 //mostrar datos 
 if (empty($_GET['id'])) {
     header('Location: lista_clientes.php');
-    mysqli_close($conection);
+    
 }
 $iduser = $_GET['id'];
 include "../conexion.php";
 $sql = mysqli_query($conection, "SELECT * FROM cliente 
 WHERE idcliente= $iduser");
-mysqli_close($conection);
+
 $result_sql = mysqli_num_rows($sql);
 if ($result_sql == 0) {
     header('Location: lista_cliente.php');

@@ -55,14 +55,24 @@
 			</ul>
 		</li>
 
+		<?php
 
+if ($_SESSION['role'] == 1) {
+
+
+?>
 		<li class="principal">
 			<a href="#"><i class="fa-solid fa-truck-field-un"></i> Proveedores</a>
 			<ul>
-				<li><a href="#"><i class="fa-solid fa-plus"></i>  Nuevo Proveedor</a></li>
-				<li><a href="#"><i class="fa-sharp fa-solid fa-book-open"></i>  Lista de Proveedores</a></li>
+				<li><a href="registro_proveedor.php"><i class="fa-solid fa-plus"></i>  Nuevo Proveedor</a></li>
+				<li><a href="lista_proveedores.php"><i class="fa-sharp fa-solid fa-book-open"></i>  Lista de Proveedores</a></li>
 			</ul>
 		</li>
+
+		<?php
+
+}
+?>
 		<li class="principal">
 			<a href="#"><i class="fa-solid fa-layer-group"></i> Productos</a>
 			<ul>

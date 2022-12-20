@@ -18,11 +18,11 @@ include "../conexion.php";
     <?php include "includes/scripts.php" ?>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Clientes</title>
+    <title>proveedors</title>
 </head>
 <style>
     /* 
-=========cliente============ */
+=========proveedor============ */
 
 
     #container h1 {
@@ -58,22 +58,21 @@ include "../conexion.php";
 
         $busqueda = strtolower($_REQUEST['busqueda']);
         if (empty($busqueda)) {
-            {
-                
-            }
+            
+            
         }
 
 
         ?>
 
 
-        <h1 class="display-1">Clientes</h1>
-        <a href="registro_cliente.php" type="button" class="btn btn-info">Crear Clientes</a>
+        <h1 class="display-1">proveedors</h1>
+        <a href="registro_proveedor.php" type="button" class="btn btn-info">Crear proveedors</a>
 
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand">Gustavo</a>
-                <form class="d-flex" action="buscar_cliente.php" method="GET">
+                <form class="d-flex" action="buscar_proveedor.php" method="GET">
                     <input  class="form-control me-2" type="text" name="busqueda" id="busqueda" placeholder="BUSCAR" value="<?PHP echo $busqueda ?>">
                     <input type="submit" value="BUSCAR" class="btn btn-outline-success">
                 </form>
@@ -83,8 +82,8 @@ include "../conexion.php";
         <table class="table table-striped">
             <tr>
                 <th>ID</th>
-                <th>DPI</th>
-                <th>Nombre</th>
+                <th>Contacto</th>
+                <th>Proveedor</th>
                 <th>Telefono</th>
                 <th>Dirección</th>
                 <th>Acciones</th>
@@ -93,14 +92,14 @@ include "../conexion.php";
             <?php
             //buscador
 
-            $sql_registe = mysqli_query($conection, "SELECT COUNT(*) as total_registro from cliente
+            $sql_registe = mysqli_query($conection, "SELECT COUNT(*) as total_registro from proveedor
                                                     WHERE
                                                     (
-                                                    idcliente LIKE '%$busqueda%' OR
-                                                    DPI LIKE '%$busqueda%' OR
-                                                    nombre LIKE '%$busqueda%' OR
-                                                    telefono LIKE '%$busqueda%' OR
-                                                    direccion LIKE '%$busqueda%')");
+                                                    codproveedor LIKE '%$busqueda%' OR
+                                                    proveedor LIKE '%$busqueda%' OR
+                                                    contacto LIKE '%$busqueda%' OR
+                                                    
+                                                    telefono LIKE '%$busqueda%' )");
 
             $result_registe = mysqli_fetch_array($sql_registe);
             $total_registro = $result_registe['total_registro'];
@@ -119,14 +118,13 @@ include "../conexion.php";
             $total_pagina = ceil($total_registro / $por_pagina);
 
 
-            $query = mysqli_query($conection, "SELECT * FROM cliente where
-            (idcliente LIKE '%$busqueda%' or
-            DPI LIKE '%$busqueda%' OR
-            nombre LIKE '%$busqueda%' OR
-            telefono LIKE '%$busqueda%' OR 
-            direccion like '%$busqueda%')
+            $query = mysqli_query($conection, "SELECT * FROM proveedor where
+            (codproveedor LIKE '%$busqueda%' or
+            contacto LIKE '%$busqueda%' OR
+            proveedor LIKE '%$busqueda%' OR
+            telefono LIKE '%$busqueda%')
             
-            ORDER BY idcliente ASC         
+            ORDER BY codproveedor ASC         
             limit $desde, $por_pagina");
 
 mysqli_close($conection);
@@ -140,13 +138,13 @@ mysqli_close($conection);
 
             <tr>
                 <td>
-                    <?php echo $data["idcliente"] ?>
+                    <?php echo $data["codproveedor"] ?>
                 </td>
                 <td>
-                    <?php echo $data["DPI"] ?>
+                    <?php echo $data["contacto"] ?>
                 </td>
                 <td>
-                    <?php echo $data["nombre"] ?>
+                    <?php echo $data["proveedor"] ?>
                 </td>
                 <td>
                     <?php echo $data["telefono"] ?>
@@ -158,23 +156,15 @@ mysqli_close($conection);
 
                 <td>
                     <a type="button" class="btn btn-success btn-sm col-xs-2 "
-                        href="editar_cliente.php?id=<?php echo $data["idcliente"] ?>" me-md-2>Editar</a>
+                        href="editar_proveedor.php?id=<?php echo $data["codproveedor"] ?>" me-md-2>Editar</a>
 
-                    <?php
-
-                    if ($data["idcliente"] != 1) {
-
-                    ?>
+                   
 
                     <a type="button" class="btn btn-danger btn-sm col-xs-2 "
-                        href="eliminar_confirmar_cliente.php?id=<?php echo $data["idcliente"] ?>" me-md-2>Eliminar</a>
+                        href="eliminar_confirmar_proveedor.php?id=<?php echo $data["codproveedor"] ?>" me-md-2>Eliminar</a>
 
 
-                    <?php
-
-                    }
-
-                    ?>
+                    
                 </td>
             </tr>
             <?php
