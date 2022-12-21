@@ -42,8 +42,8 @@
 		<li class="principal">
 			<a href="#"><i class="fa-solid fa-briefcase"></i> PROYECTO</a>
 			<ul>
-				<li><a href="#"><i class="fa-solid fa-plus"></i>  Nuevo Proyecto</a></li>
-				<li><a href="#"><i class="fa-sharp fa-solid fa-book-open"></i>  Lista de Proyecto</a></li>
+				<li><a href="registro_proyecto.php"><i class="fa-solid fa-plus"></i>  Nuevo Proyecto</a></li>
+				<li><a href="lista_proyectos.php"><i class="fa-sharp fa-solid fa-book-open"></i>  Lista de Proyecto</a></li>
 			</ul>
 		</li>
 
@@ -76,7 +76,7 @@ if ($_SESSION['role'] == 1) {
 		<li class="principal">
 			<a href="#"><i class="fa-solid fa-layer-group"></i> Productos</a>
 			<ul>
-				<li><a href="#"><i class="fa-solid fa-plus"></i>  Nuevo Producto</a></li>
+				<li><a href="registro_producto.php"><i class="fa-solid fa-plus"></i>  Nuevo Producto</a></li>
 				<li><a href="#"><i class="fa-sharp fa-solid fa-book-open"></i>  Lista de Productos</a></li>
 			</ul>
 		</li>
